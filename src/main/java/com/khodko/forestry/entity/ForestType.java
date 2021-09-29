@@ -3,11 +3,13 @@ package com.khodko.forestry.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "village")
+@Table(name = "forest_type")
 @Data
-public class Village extends BaseEntity {
+public class ForestType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +19,8 @@ public class Village extends BaseEntity {
     @Column(name = "name", nullable = false, length = 64)
     private String name;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "forestType", cascade = CascadeType.ALL)
+    private Set<TreeKind> treeKindSet;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
+

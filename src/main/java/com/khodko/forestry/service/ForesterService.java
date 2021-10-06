@@ -8,9 +8,10 @@ import java.util.List;
 
 public class ForesterService {
 
-    private final ForesterDao foresterDao = new ForesterDao();
+    private final ForesterDao foresterDao;
 
     public ForesterService() {
+        this.foresterDao = new ForesterDao();
     }
 
     public Serializable save(Forester item) {

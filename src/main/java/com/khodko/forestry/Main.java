@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/forestry_v2", "root", "22022002");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/forestry", "postgres", "postgres");
             Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
             Liquibase liquibase = new liquibase.Liquibase("db.changelog/changes/db.changelog-master.xml", new ClassLoaderResourceAccessor(), database);
             liquibase.update(new Contexts(), new LabelExpression());
@@ -27,8 +27,8 @@ public class Main {
         }
 
         Menu menu = new Menu();
-        menu.batch();
-        menu.printMenu();
+        menu.batch1();
+//        menu.printMenu();
 
     }
 }

@@ -31,17 +31,36 @@ public class Menu {
     }
 
     public void batch() {
+        int batchSize = 10;
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         for (int i = 0; i < 100; i++ ) {
-            int batchSize = 10;
+            Village village = createVillage();
+            session.persist(village);
             if (i % batchSize == 0) {
                 session.flush();
                 session.clear();
             }
-            Village village = createVillage();
-            session.save(village);
         }
+        session.flush();
+        session.clear();
+        tx1.commit();
+        session.close();
+    }
+
+    public void batch1() {
+        int batchSize = 10;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        for (int i = 0; i < 100; i++ ) {
+            Forester forester = createForester();
+            session.persist(forester);
+
+        }
+        session.flush();
+        session.clear();
         tx1.commit();
         session.close();
     }

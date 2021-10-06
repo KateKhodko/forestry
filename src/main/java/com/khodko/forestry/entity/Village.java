@@ -17,11 +17,9 @@ import javax.persistence.*;
 public class Village implements BaseEntity {
 
     @Id
-    @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
-            @org.hibernate.annotations.Parameter(name = "sequenceName", value = "sequence"),
-            @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1"),
-    })
-    @GeneratedValue(generator = "sequence", strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="foo_sequence")
+//    @SequenceGenerator(name="foo_sequence", sequenceName = "foo_id_seq")
     @Column(name = "id", nullable = false)
     private Long id;
 

@@ -11,6 +11,7 @@
     <include  file="db.changelog/changes/changes/v1/create-table-tree_kind.sql"/>
     <include  file="db.changelog/changes/changes/v1/create-table-planting.sql"/>
     <include  file="db.changelog/changes/changes/v1/create-table-tree.sql"/>
+    <include  file="db.changelog/changes/changes/v1/create-hibernate-sequence.sql"/>
 
 
 </databaseChangeLog>

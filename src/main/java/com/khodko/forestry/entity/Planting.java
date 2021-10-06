@@ -1,18 +1,20 @@
 package com.khodko.forestry.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "planting")
-@Data
-public class Planting extends BaseEntity {
+public class Planting implements BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false, length = 64)
@@ -29,6 +31,7 @@ public class Planting extends BaseEntity {
     @JoinColumn(name = "tree_kind_id")
     private TreeKind treeKind;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "planting", cascade = CascadeType.ALL)
     private Set<Tree> tree;
 }

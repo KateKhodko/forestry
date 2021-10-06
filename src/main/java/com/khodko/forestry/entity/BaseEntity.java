@@ -1,4 +1,6 @@
 package com.khodko.forestry.entity;
 
-public abstract class BaseEntity {
+public interface BaseEntity {
+
+    Long getId();
 }

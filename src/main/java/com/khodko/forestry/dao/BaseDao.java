@@ -48,11 +48,11 @@ public abstract class BaseDao<T extends BaseEntity> {
         executeConsume(session -> session.delete(item));
     }
 
-    public T findById(int id) {
+    public T findById(long id) {
         return executeFunction(session -> session.find(persistentClass, id));
     }
 
-    public List<T> findAll( ) {
+    public List<T> findAll() {
         return executeFunction(session -> {
             String hql = String.format("SELECT a FROM %s a", persistentClass.getSimpleName());
             return session.createQuery(hql, persistentClass).getResultList();
